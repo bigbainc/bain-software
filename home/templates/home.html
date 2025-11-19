@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'home/css/home.css' %}">
+<div class="home-container">
+    <div class="decks-section">
+        <h1 class="section-title">Decks</h1>
+        <div class="horizontal-grid">
+            <div class="deck-card">
+                <p class="deck-title">Chinese</p>
+                <p class="deck-info">Last Score</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
