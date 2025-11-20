@@ -1,7 +1,7 @@
-/* body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+body {
+    font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
     display: flex;
-} */
+}
 
 :root {
     --bg-dark: hsl(107 31% 1%);
