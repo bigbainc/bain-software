@@ -4,7 +4,26 @@
 {% block content %}
 <link rel="stylesheet" href="{% static 'home/css/home.css' %}">
 <div class="createoverlay" id="createoverlay">
-    <h1 class="section-title">New Deck</h1>
+    <div class="create-box">
+        <div class="header-x">
+            <h1 class="section-title">New Deck</h1>
+            <div class="spacer1"></div>
+            <a class="close" href="javascript:void(0)" onclick="open_create()">
+                <img class="icon" src="https://media.discordapp.net/attachments/1399204625441357925/1441154014761979996/X_square.png?ex=6920c2c4&is=691f7144&hm=29cb96edbff9393cc8cd29aa68177e1f5f7b5ccc77e014f0c5d658cf61610c57&=&format=webp&quality=lossless&width=96&height=96">
+            </a>
+        </div>
+        <hr>
+        <form class="form-area">
+            <input type="text" class="question-form" placeholder="Question...">
+            <div class="solutions-area">
+                <input type="text" class="answer-form" placeholder="Answer 1">
+                <input type="text" class="answer-form" placeholder="Answer 2">
+                <input type="text" class="answer-form" placeholder="Answer 3">
+                <input type="text" class="answer-form" placeholder="Answer 4">
+            </div>
+            <a class="add-question" onclick="send"
+        </form>
+    </div>
 </div>
 <div class="home-container">
     <div class="section">
@@ -12,7 +31,7 @@
         <hr>
         <div class="horizontal-grid">
             <a class="create-new" href="javascript:void(0)" onclick="open_create()">
-                <img class="plus" src="https://media.discordapp.net/attachments/1399204625441357925/1440979794639454348/Plus_circle.png?ex=69202083&is=691ecf03&hm=284a6456192e590090068de57071d81d8a757a97074b621cda27b8fdd713f44c&=&format=webp&quality=lossless&width=96&height=96">
+                <img class="icon" src="https://media.discordapp.net/attachments/1399204625441357925/1440979794639454348/Plus_circle.png?ex=69202083&is=691ecf03&hm=284a6456192e590090068de57071d81d8a757a97074b621cda27b8fdd713f44c&=&format=webp&quality=lossless&width=96&height=96">
                 <p class="card-middle">Create New</p>
             </a>
             <div class="deck-card">

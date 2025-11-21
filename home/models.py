@@ -1,3 +1,8 @@
 from django.db import models
 
-# Create your models here.
+class Question(models.Model):
+    question = models.CharField(max_length=100)
+    solution1 = models.CharField(max_length=50)
+    solution2 = models.CharField(max_length=50)
+    solution3 = models.CharField(max_length=50)
+    solution4 = models.CharField(max_length=50)
