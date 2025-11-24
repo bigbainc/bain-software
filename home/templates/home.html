@@ -65,6 +65,14 @@
             </div>
         </div>
     </div>
+        <table>
+        {% for item in object_list %}
+        <tr>
+            <td>{{ item.question }}</td>
+            <td>{{ item.solution2 }}</td>
+        </tr>
+        {% endfor %}
+    </table>
 </div>
 <script>
     function open_create() {

@@ -6,8 +6,8 @@ from .forms import questionForm
 def home_view(request):
     return render(request, 'home.html')
 
-def statistics_view(request):
-    return render(request, 'statistics.html')
+def test_view(request):
+    return render(request, 'test.html')
 
 def addQuestion(request):
     if request.method == "POST":
@@ -24,4 +24,4 @@ def getQuestion(request):
     model = Question
     templateName = "home/home.html"
     def get_queryset(self):
-        return Question.objects.filter(due_date=date.today())
+        return Question.objects()
