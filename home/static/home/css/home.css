@@ -181,3 +181,17 @@
     gap: 2rem;
     grid-template-columns: 25rem 25rem;
 }
+
+#add-another-question {
+    display: flex;
+    height: 2rem;
+    width: 10rem;
+    background-color: var(--primary);
+}
+
+#finsih-add-question {
+    display: flex;
+    height: 3rem;
+    width: 10rem;
+    background-color: var(--secondary);
+}
