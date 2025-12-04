@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'home/css/home.css' %}">
+</head>
+<body>
     <div class="menubar" id="menubar">
         <a href="javascript:void(0)" class="closebtn" onclick="close_menu()"><img src="{% static 'home/images/X_square.webp' %}" alt="close menu"></a>
         <p class="menubartext">Home</p>
@@ -21,7 +23,5 @@
         <span style="font-size:30px;cursor:pointer" onclick="open_menu()"><img src="{%static 'home/images/Menu.png'%}"></span>
         <p class="logo">hi micaiah</p>
     </div>
-</head>
-<body>
     {% block content %}{% endblock %}
 </body>

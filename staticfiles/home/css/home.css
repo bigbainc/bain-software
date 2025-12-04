@@ -47,7 +47,8 @@
 }
 
 .menubartext {
-    color: var(--text);
+    color: red;
+    background-color: var(--primary);
     font-size: var(--logo);
 }
 
