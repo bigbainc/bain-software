@@ -38,7 +38,8 @@
 .menubar {
     background-color: var(--bg);
     height: 100%;
-    display: none;
+    display: flex;
+    flex-direction: column;
     width: 15rem;
     position: fixed;
     padding: 0.5rem;
