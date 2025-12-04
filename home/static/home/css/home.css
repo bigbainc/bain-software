@@ -40,21 +40,34 @@
     height: 100%;
     display: flex;
     flex-direction: column;
-    width: 15rem;
+    width: 17rem;
     position: fixed;
     padding: 0.5rem;
     opacity: 90%;
+    gap: 2rem;
 }
 
 .menubartext {
-    color: red;
-    background-color: var(--primary);
-    font-size: var(--logo);
+    color: var(--text);
+    font-size: var(--sub);
+    padding: 0.5rem;
+}
+
+.menubargroup {
+    display: flex;
+    flex-direction: row;
+    gap: 0.6rem;
 }
 
 .logo {
     font-size: var(--logo);
     margin-left: 0.5rem;
+}
+
+.logowhite {
+    font-size: var(--logo);
+    margin-left: 0.5rem;
+    color: var(--text);
 }
 
 .home-container {

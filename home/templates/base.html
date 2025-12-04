@@ -8,8 +8,11 @@
 </head>
 <body>
     <div class="menubar" id="menubar">
-        <a href="javascript:void(0)" class="closebtn" onclick="close_menu()"><img src="{% static 'home/images/X_square.webp' %}" alt="close menu"></a>
-        <p class="menubartext">Home</p>
+        <div class="menubargroup"><a href="javascript:void(0)" class="closebtn" onclick="close_menu()"><img src="{% static 'home/images/X_square.webp' %}" alt="close menu"></a><p class="logowhite">QUIZZ</p></div>
+        <div class="menubargroup"><img src="{%static 'home/images/Home.png'%}"><p class="menubartext">Home</p></div>
+        <div class="menubargroup"><img src="{%static 'home/images/Percent.png'%}"><p class="menubartext">Analytics</p></div>
+        <div class="menubargroup"><img src="{%static 'home/images/Layers.png'%}"><p class="menubartext">Quizzes</p></div>
+        <div class="menubargroup"><img src="{%static 'home/images/Plus_Square.png'%}"><p class="menubartext">New Deck</p></div>
     </div>
     <script>
         function open_menu() {
@@ -21,7 +24,7 @@
     </script>
     <div class="menu">
         <span style="font-size:30px;cursor:pointer" onclick="open_menu()"><img src="{%static 'home/images/Menu.png'%}"></span>
-        <p class="logo">hi micaiah</p>
+        <p class="logo">QUIZZ</p>
     </div>
     {% block content %}{% endblock %}
 </body>
