@@ -6,7 +6,7 @@
 <div class="createoverlay" id="createoverlay">
     <div class="create-box">
         <div class="header-x">
-            <h1 class="section-title">New Question</h1>
+            <h1 class="section-title">Add New Question</h1>
             <div class="spacer1"></div>
             <a class="close" href="javascript:void(0)" onclick="open_create()">
                 <img class="icon" src="{%static 'home/images/X_square.webp'%}">
@@ -14,7 +14,7 @@
         </div>
         <hr>
         <form class="form-area" method="post">
-        {% csrf_token %}
+            {% csrf_token %}
             {{ form.question }}
             {{ form.question.errors }}
             <div class="solutions-area">
@@ -23,8 +23,11 @@
                 {{ form.solution3 }}
                 {{ form.solution4 }}
             </div>
-            {{ form.newtags }}
+            <p class="instruction">Select existing catagories to label the question as or add new ones:</p>
             {{ form.tags }}
+            {{ form.newtags }}
+            <p class="instruction">NOTE: You can not have more than 4 catagories. Attempting to add more will result in the question not being saved.</p>
+            <p class="instruction">NOTE: Any new catagories created will be applied to this question.</p>
             <button id="finish-add-question" type="submit" name="continue" value="complete">Finish</a>
         </form>
     </div>
@@ -38,13 +41,13 @@
                 <img class="icon" src="{%static 'home/images/Plus_Circle.png'%}">
                 <p class="card-middle">Create New</p>
             </a>
+            {% comment %} Cards for each category {% endcomment %}
+            <div class="deck-card">
+                <p class="card-title">{%  %}</p>
             <div class="deck-card">
                 <p class="card-title">Chinese</p>
                 <p class="info">Last Score</p>
             </div>
-            <div class="deck-card">
-                <p class="card-title">Math</p>
-                <p class="info">Last Score</p>
         </div>
     </div>
     <div class="section">

@@ -24,6 +24,7 @@
     --logo: 3rem;
     --sub: 2rem;
     --buttontext: 1.5rem;
+    --small: 1rem;
     background-color: var(--bg);
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
@@ -172,7 +173,8 @@
     display: flex;
     flex-direction: column;
     padding-top: 2rem;
-    gap: 2rem;
+    gap: 0.5rem;
+    color: var(--text);
 }
 
 .header-x {
@@ -233,4 +235,16 @@
     border-radius: 15px;
     align-items: center;
     border: none;
+}
+
+.newtags-input {
+    height: 1.5rem;
+    width: 50%;
+    padding: 1rem;
+    font-size: var(--buttontext);
+}
+
+.instruction {
+    font-size: var(--small);
+    color: var(--text);
 }
