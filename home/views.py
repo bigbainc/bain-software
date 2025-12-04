@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from .models import Question, Category
 from .forms import questionForm
 from django.contrib.auth.decorators import login_required
+from itertools import chain
 
 @login_required
 def home_view(request):
@@ -11,16 +12,19 @@ def home_view(request):
         form = questionForm(request.POST)
         if form.is_valid():
             question = form.save(commit=False)
-            newtags = form.cleaned_data.get('newtags')
-            if newtags:
-                newtaglist = [t.strip() for t in newtags.split(',') if t.strip()]
-                for tag_name in newtaglist:
-                    category_obj, created = Category.objects.get_or_create(name=tag_name)
-                    form.instance.category.add(category_obj)# add the new category to the existing list
-            question = form.save(commit=False)
             question.owner = request.user
             question.save()
-            question.category.set(form.cleaned_data['tags']) 
+            newCategories = [] # start with empty list
+            if newCategories:
+                newtaglist = [t.strip() for t in newCategories.split(',') if t.strip()] #splits on commas and removes extra spaces
+                for tag_name in newtaglist:
+                    category_obj, _ = Category.objects.get_or_create(name=tag_name)
+                    newCategories.append(category_obj)# add the new category to the existing list
+            question = form.save(commit=False)
+            question.save()
+            selectedCatagories = form.cleaned_data['tags']  # get selected categories from the form
+            combinedList = list({c.id: c for c in chain(selectedCatagories, newCategories)}.values()) # get selected categories from the form AND the new ones
+            question.category.set(combinedList) 
             form.save_m2m()
             print("Question saved successfully.")
             if request.POST.get('continue') == 'complete':
