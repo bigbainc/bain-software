@@ -5,7 +5,6 @@ from django.contrib.auth.decorators import login_required
 from itertools import chain
 from django.db.models import Count, Q, Prefetch
 
-@login_required
 def home_view(request):
     print("HOME VIEW RENDERED")
     if request.method == "POST":

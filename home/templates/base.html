@@ -10,7 +10,6 @@
     <div class="menubar" id="menubar">
         <div class="menubargroup"><a href="javascript:void(0)" class="closebtn" onclick="close_menu()"><img src="{% static 'home/images/X_square.webp' %}" alt="close menu"></a><p class="logowhite">QUIZZ</p></div>
         <a class="menubargroup" href="{% url 'home'%}"><img src="{%static 'home/images/Home.png'%}"><p class="menubartext">Home</p></a>
-        <a class="menubargroup" href="{% url 'logout' %}"><img src="{%static 'home/images/LogOut.png'%}"><p class="menubartext">Log Out</p></a>
     </div>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
