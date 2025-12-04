@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import Question
+from .models import Question, Category
 from .forms import questionForm
 from django.contrib.auth.decorators import login_required
 
@@ -9,16 +9,18 @@ def home_view(request):
     if request.method == "POST":
         print("POST request received")
         form = questionForm(request.POST)
-        category = request.POST.getlist('tags')
         if form.is_valid():
-            if newtags := form.cleaned_data.get('newtags'):
-                newtaglist = [tag.strip() for tag in newtags.split(',') if tag.strip()]
-                for tag_name in newtaglist:
-                    category_obj, created = questionForm.objects.get_or_create(name=tag_name)
-                    form.instance.category.add(category_obj)
             question = form.save(commit=False)
-            form.instance.owner = request.user
-            form.save()
+            newtags = form.cleaned_data.get('newtags')
+            if newtags:
+                newtaglist = [t.strip() for t in newtags.split(',') if t.strip()]
+                for tag_name in newtaglist:
+                    category_obj, created = Category.objects.get_or_create(name=tag_name)
+                    form.instance.category.add(category_obj)# add the new category to the existing list
+            question = form.save(commit=False)
+            question.owner = request.user
+            question.save()
+            question.category.set(form.cleaned_data['tags']) 
             form.save_m2m()
             print("Question saved successfully.")
             if request.POST.get('continue') == 'complete':
