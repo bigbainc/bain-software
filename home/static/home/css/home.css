@@ -202,6 +202,13 @@
     grid-template-columns: 25rem 25rem;
 }
 
+.answer-form {
+    height: 2rem;
+    width: 100%;
+    padding: 1rem;
+    font-size: var(--sub);
+}
+
 #add-another-question {
     display: flex;
     height: 2rem;
