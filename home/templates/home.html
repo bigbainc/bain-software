@@ -9,7 +9,7 @@
             <h1 class="section-title">Add New Question</h1>
             <div class="spacer1"></div>
             <button class="close close-button" type="button" onclick="open_create()">
-                <img class="icon" src="{% static 'home/images/X_square.webp' %}" alt="Close">
+                <img title="close button" class="icon" src="{% static 'home/images/X_square.webp' %}" alt="Close">
             </button>
         </div>
         <hr>
@@ -43,7 +43,7 @@
         <hr>
         <div class="horizontal-grid">
             <a class="create-new" href="javascript:void(0)" onclick="open_create()">
-                <img class="icon" src="{%static 'home/images/Plus_Circle.png'%}">
+                <img title="plus button" class="icon" src="{%static 'home/images/Plus_Circle.png'%}">
                 <p class="card-middle">Create New</p>
             </a>
             {% for category in categories %}
@@ -55,22 +55,6 @@
             {% endfor %}
         </div>
     </div>
-    <div class="section">
-        <h1 class="section-title">Analytics</h1>
-        <hr>
-        <div class="horizontal-grid">
-            <div class="deck-card">
-                <p class="card-title">Streak</p>
-                <p class="info">Days Long</p>
-            </div>
-            <div class="deck-card">
-                <p class="card-title">Weekly Average</p>
-            </div>
-            <div class="deck-card-wide">
-                <p class="card-title">Past Year<p>
-            </div>
-        </div>
-    </div>
     {% for category in categories %}
     <div class="category-overlay" id="category-overlay-{{ category.id }}">
         <div class="category-overlay-box">
@@ -78,7 +62,7 @@
                 <h2 class="section-title">{{ category.name }}</h2>
                 <div class="spacer1"></div>
                 <button class="close close-button" type="button" onclick="toggleCategoryOverlay('{{ category.id }}')">
-                    <img class="icon" src="{%static 'home/images/X_square.webp'%}" alt="Close">
+                    <img title="close button" class="icon" src="{%static 'home/images/X_square.webp'%}" alt="Close">
                 </button>
             </div>
             <hr>

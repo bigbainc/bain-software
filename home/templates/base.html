@@ -8,8 +8,8 @@
 </head>
 <body>
     <div class="menubar" id="menubar">
-        <div class="menubargroup"><a href="javascript:void(0)" class="closebtn" onclick="close_menu()"><img src="{% static 'home/images/X_square.webp' %}" alt="close menu"></a><p class="logowhite">QUIZZ</p></div>
-        <a class="menubargroup" href="{% url 'home'%}"><img src="{%static 'home/images/Home.png'%}"><p class="menubartext">Home</p></a>
+        <div class="menubargroup"><a href="javascript:void(0)" class="closebtn" onclick="close_menu()"><img title="close button" src="{% static 'home/images/X_square.webp' %}" alt="close menu"></a><p class="logowhite">QUIZZ</p></div>
+        <a class="menubargroup" href="{% url 'home'%}"><img title="home icon" src="{%static 'home/images/Home.png'%}"><p class="menubartext">Home</p></a>
     </div>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
@@ -29,7 +29,7 @@
         }
     </script>
     <div class="menu">
-        <span style="font-size:30px;cursor:pointer" onclick="open_menu()"><img src="{%static 'home/images/Menu.png'%}"></span>
+        <span style="font-size:30px;cursor:pointer" onclick="open_menu()"><img title="menu button" src="{%static 'home/images/Menu.png'%}"></span>
         <p class="logo">QUIZZ</p>
     </div>
     {% block content %}{% endblock %}
