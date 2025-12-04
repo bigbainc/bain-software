@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'home/css/home.css' %}">
     <div class="menubar" id="menubar">
-        <a href="javascript:void(0)" class="closebtn" onclick="close_menu()"><img src="https://media.discordapp.net/attachments/1399204625441357925/1440988447715233885/Menuwhite.png?ex=69202892&is=691ed712&hm=16854b08be0c1b780bf81e46c0aefb7659acc7ab0361b578f52d2076c3b978d9&=&format=webp&quality=lossless&width=96&height=96"></a>
+        <a href="javascript:void(0)" class="closebtn" onclick="close_menu()"><img src="{% static 'home/images/X_square.webp' %}" alt="close menu"></a>
     </div>
     <script>
         function open_menu() {
@@ -17,7 +17,7 @@
         }
     </script>
     <div class="menu">
-        <span style="font-size:30px;cursor:pointer" onclick="open_menu()"><img src="https://media.discordapp.net/attachments/1399204625441357925/1440976855284060190/Menu.png?ex=69201dc6&is=691ecc46&hm=79b06eb217c56bf4df5a188423189811af31bdf231d2eabbb052b161cd15a961&=&format=webp&quality=lossless&width=96&height=96"></span>
+        <span style="font-size:30px;cursor:pointer" onclick="open_menu()"><img src="{%static 'home/images/Menu.png'%}"></span>
         <p class="logo">FLIPPR</p>
     </div>
 </head>
