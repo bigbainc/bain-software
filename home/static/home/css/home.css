@@ -46,6 +46,11 @@
     opacity: 90%;
 }
 
+.menubartext {
+    color: var(--text);
+    font-size: var(--logo);
+}
+
 .logo {
     font-size: var(--logo);
     margin-left: 0.5rem;

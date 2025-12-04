@@ -38,11 +38,17 @@
 .menubar {
     background-color: var(--bg);
     height: 100%;
-    display: none;
+    display: flex;
+    flex-direction: column;
     width: 15rem;
     position: fixed;
     padding: 0.5rem;
     opacity: 90%;
+}
+
+.menubartext {
+    color: var(--text);
+    font-size: var(--logo);
 }
 
 .logo {
