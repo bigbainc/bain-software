@@ -12,6 +12,13 @@ class Question(models.Model):
     solution2 = models.CharField(max_length=50)
     solution3 = models.CharField(max_length=50)
     solution4 = models.CharField(max_length=50)
+    CORRECT_CHOICES = (
+        (1, 'Answer 1'),
+        (2, 'Answer 2'),
+        (3, 'Answer 3'),
+        (4, 'Answer 4'),
+    )
+    correct_answer = models.PositiveSmallIntegerField(choices=CORRECT_CHOICES, default=1)
     createAt = models.DateTimeField(auto_now_add=True)
     category = models.ManyToManyField('Category', related_name='questions', blank=True)
 

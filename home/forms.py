@@ -14,13 +14,21 @@ class questionForm(forms.ModelForm):
     )
     class Meta:
         model = Question
-        fields = ["question", "solution1", "solution2", "solution3", "solution4"]
+        fields = [
+            "question",
+            "solution1",
+            "solution2",
+            "solution3",
+            "solution4",
+            "correct_answer",
+        ]
         widgets = {
             "question": forms.TextInput(attrs={"rows":4, "cols":40, 'placeholder':"Question...", 'class':'question-form'}),
             "solution1": forms.TextInput(attrs={"rows":4, "cols":40, 'placeholder':"Answer 1", 'class':'answer-form'}),
             "solution2": forms.TextInput(attrs={"rows":4, "cols":40, 'placeholder':"Answer 2", 'class':'answer-form'}),
             "solution3": forms.TextInput(attrs={"rows":4, "cols":40, 'placeholder':"Answer 3", 'class':'answer-form'}),
             "solution4": forms.TextInput(attrs={"rows":4, "cols":40, 'placeholder':"Answer 4", 'class':'answer-form'}),
+            "correct_answer": forms.RadioSelect(attrs={'class': 'correct-answer-select'}),
         }
 
     def clean(self):

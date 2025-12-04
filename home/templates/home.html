@@ -23,6 +23,11 @@
                 {{ form.solution3 }}
                 {{ form.solution4 }}
             </div>
+            <p class="instruction">Mark which answer is correct:</p>
+            <div class="correct-answer-field">
+                {{ form.correct_answer }}
+                {{ form.correct_answer.errors }}
+            </div>
             <p class="instruction">Select existing catagories to label the question as or add new ones:</p>
             {{ form.tags }}
             {{ form.newtags }}
@@ -82,10 +87,22 @@
                 <li>
                     <p class="question-text">{{ question.question }}</p>
                     <ul class="answer-list">
-                        <li>{{ question.solution1 }}</li>
-                        <li>{{ question.solution2 }}</li>
-                        <li>{{ question.solution3 }}</li>
-                        <li>{{ question.solution4 }}</li>
+                        <li class="answer-item {% if question.correct_answer == 1 %}correct-answer{% endif %}">
+                            <span class="answer-key">A</span>
+                            <span>{{ question.solution1 }}</span>
+                        </li>
+                        <li class="answer-item {% if question.correct_answer == 2 %}correct-answer{% endif %}">
+                            <span class="answer-key">B</span>
+                            <span>{{ question.solution2 }}</span>
+                        </li>
+                        <li class="answer-item {% if question.correct_answer == 3 %}correct-answer{% endif %}">
+                            <span class="answer-key">C</span>
+                            <span>{{ question.solution3 }}</span>
+                        </li>
+                        <li class="answer-item {% if question.correct_answer == 4 %}correct-answer{% endif %}">
+                            <span class="answer-key">D</span>
+                            <span>{{ question.solution4 }}</span>
+                        </li>
                     </ul>
                 </li>
                 {% empty %}
