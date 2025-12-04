@@ -234,3 +234,10 @@
     align-items: center;
     border: none;
 }
+
+.newtags-input {
+    height: 2rem;
+    width: 50%;
+    padding: 1rem;
+    font-size: var(--buttontext);
+}
