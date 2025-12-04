@@ -13,8 +13,10 @@
             </a>
         </div>
         <hr>
-        <form class="form-area">
+        <form class="form-area" method="post">
+        {% csrf_token %}
             {{ form.question }}
+            {{ form.question.errors }}
             <div class="solutions-area">
                 {{ form.solution1 }}
                 {{ form.solution2 }}
@@ -22,7 +24,7 @@
                 {{ form.solution4 }}
             </div>
             <a id="add-another-question" onclick="send_question()">Add Another Question</a>
-            <a id="finish-add-question" href="javascript:void(0)" onclick="send_question()" onclick="open_create()">Finish</a>
+            <button id="finish-add-question" type="submit">Finish</a>
         </form>
     </div>
 </div>
