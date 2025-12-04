@@ -9,12 +9,23 @@
 <body>
     <div class="menubar" id="menubar">
         <div class="menubargroup"><a href="javascript:void(0)" class="closebtn" onclick="close_menu()"><img src="{% static 'home/images/X_square.webp' %}" alt="close menu"></a><p class="logowhite">QUIZZ</p></div>
-        <div class="menubargroup"><img src="{%static 'home/images/Home.png'%}"><p class="menubartext">Home</p></div>
-        <div class="menubargroup"><img src="{%static 'home/images/Percent.png'%}"><p class="menubartext">Analytics</p></div>
-        <div class="menubargroup"><img src="{%static 'home/images/Layers.png'%}"><p class="menubartext">Quizzes</p></div>
-        <div class="menubargroup"><img src="{%static 'home/images/Plus_Square.png'%}"><p class="menubartext">New Deck</p></div>
+        <a class="menubargroup" href="{% url 'home'%}"><img src="{%static 'home/images/Home.png'%}"><p class="menubartext">Home</p></a>
+        <a class="menubargroup" href="{% url 'home'%}"><img src="{%static 'home/images/Percent.png'%}"><p class="menubartext">Analytics</p></a>
+        <a class="menubargroup" href="{% url 'quizzes'%}"><img src="{%static 'home/images/Layers.png'%}"><p class="menubartext">Quizzes</p></a>
+        <a class="menubargroup" href="{% url 'home'%}"><img src="{%static 'home/images/Plus_Square.png'%}"><p class="menubartext">New Deck</p></a>
     </div>
     <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById("menubar").style.display = "none";
+        });
+        document.addEventListener('click', function(event) {
+        const menubar = document.getElementById("menubar");
+            console.log("CLICKDETECTED");
+            if (!menubar.contains(event.target) && event.target.closest('.menu') == null) {
+                console.log("CLOSING MENU");
+                close_menu();
+            }
+        });
         function open_menu() {
             document.getElementById("menubar").style.display = "flex";
         }

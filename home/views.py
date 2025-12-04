@@ -11,7 +11,8 @@ def home_view(request):
         if form.is_valid():
             form.save()
             print("Question saved successfully.")
-            return redirect('home')
+            if request.POST.get('continue') == 'complete':
+                return redirect('home')
     else:
         print("ERROR OCCURED: invalid form")
         form = questionForm()
