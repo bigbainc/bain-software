@@ -1,0 +1,22 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
+    display: flex;
+}
+
+:root {
+    --bg-dark: hsl(107 31% 1%);
+    --bg: hsl(106 20% 4%);
+    --bg-light: hsl(105 10% 8%);
+    --text: hsl(105 40% 94%);
+    --text-muted: hsl(105 8% 68%);
+    --highlight: hsl(105 6% 38%);
+    --border: hsl(105 8% 27%);
+    --border-muted: hsl(105 11% 17%);
+    --primary: hsl(105 33% 63%);
+    --secondary: hsl(286 46% 74%);
+    --danger: hsl(9 26% 64%);
+    --warning: hsl(52 19% 57%);
+    --success: hsl(146 17% 59%);
+    --info: hsl(217 28% 65%);
+}
+
