@@ -1,8 +1,9 @@
 from django.shortcuts import render, redirect
 from .models import Question
 from .forms import questionForm
+from django.contrib.auth.decorators import login_required
 
-
+@login_required
 def home_view(request):
     print("HOME VIEW RENDERED")
     if request.method == "POST":

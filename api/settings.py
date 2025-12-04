@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'home',
 ]
 
-LOGIN_REDIRECT_URL = 'second_page'
+LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'login'
 
 MIDDLEWARE = [
