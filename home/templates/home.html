@@ -46,7 +46,8 @@
                 <img title="plus button" class="icon" src="{%static 'home/images/Plus_Circle.png'%}">
                 <p class="card-middle">Create New</p>
             </a>
-            {% for category in categories %}
+            {% for category in categories %} 
+            {% comment %} for each category create a card {% endcomment %}
             <button class="deck-card deck-card-button" type="button" onclick="toggleCategoryOverlay('{{ category.id }}')">
                 <p class="card-title">{{ category.name }}</p>
                 <p class="info">Number of questions:</p>
@@ -67,7 +68,8 @@
             </div>
             <hr>
             <ul class="question-list">
-                {% for question in category.owner_questions %}
+                {% for question in category.owner_questions %} 
+                {% comment %} iterates over the questions owned by the current user that belong to this category  {% endcomment %}
                 <li>
                     <p class="question-text">{{ question.question }}</p>
                     <ul class="answer-list">
@@ -98,13 +100,10 @@
     {% endfor %}
 </div>
 <script>
-    function open_create() {
+    function open_create() { //toggle create question overlay
         document.getElementById("createoverlay").classList.toggle('show');
     }
-    function send_question() {
-        document.getElementById("question-form")
-    }
-    function toggleCategoryOverlay(id) {
+    function toggleCategoryOverlay(id) { //toggles the visibility of the category overlay for the given category id (shows the questions and answers)
         const overlay = document.getElementById('category-overlay-' + id);
         if (!overlay) return;
         overlay.classList.toggle('show');
