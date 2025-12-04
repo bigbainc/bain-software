@@ -8,9 +8,9 @@
         <div class="header-x">
             <h1 class="section-title">Add New Question</h1>
             <div class="spacer1"></div>
-            <a class="close" href="javascript:void(0)" onclick="open_create()">
-                <img class="icon" src="{%static 'home/images/X_square.webp'%}">
-            </a>
+            <button class="close close-button" type="button" onclick="open_create()">
+                <img class="icon" src="{% static 'home/images/X_square.webp' %}" alt="Close">
+            </button>
         </div>
         <hr>
         <form class="form-area" method="post">
@@ -42,11 +42,11 @@
                 <p class="card-middle">Create New</p>
             </a>
             {% for category in categories %}
-            <div class="deck-card">
+            <button class="deck-card deck-card-button" type="button" onclick="toggleCategoryOverlay('{{ category.id }}')">
                 <p class="card-title">{{ category.name }}</p>
                 <p class="info">Number of questions:</p>
                 <p class="big-number">{{ category.question_count }}</p>
-            </div>
+            </button>
             {% endfor %}
         </div>
     </div>
@@ -66,6 +66,35 @@
             </div>
         </div>
     </div>
+    {% for category in categories %}
+    <div class="category-overlay" id="category-overlay-{{ category.id }}">
+        <div class="category-overlay-box">
+            <div class="header-x">
+                <h2 class="section-title">{{ category.name }}</h2>
+                <div class="spacer1"></div>
+                <button class="close close-button" type="button" onclick="toggleCategoryOverlay('{{ category.id }}')">
+                    <img class="icon" src="{%static 'home/images/X_square.webp'%}" alt="Close">
+                </button>
+            </div>
+            <hr>
+            <ul class="question-list">
+                {% for question in category.owner_questions %}
+                <li>
+                    <p class="question-text">{{ question.question }}</p>
+                    <ul class="answer-list">
+                        <li>{{ question.solution1 }}</li>
+                        <li>{{ question.solution2 }}</li>
+                        <li>{{ question.solution3 }}</li>
+                        <li>{{ question.solution4 }}</li>
+                    </ul>
+                </li>
+                {% empty %}
+                <li class="question-empty">No questions in this deck yet</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    {% endfor %}
 </div>
 <script>
     function open_create() {
@@ -73,6 +102,11 @@
     }
     function send_question() {
         document.getElementById("question-form")
+    }
+    function toggleCategoryOverlay(id) {
+        const overlay = document.getElementById('category-overlay-' + id);
+        if (!overlay) return;
+        overlay.classList.toggle('show');
     }
 </script>
 {% endblock %}

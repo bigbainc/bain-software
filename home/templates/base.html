@@ -18,9 +18,7 @@
         });
         document.addEventListener('click', function(event) {
         const menubar = document.getElementById("menubar");
-            console.log("CLICKDETECTED");
             if (!menubar.contains(event.target) && event.target.closest('.menu') == null) {
-                console.log("CLOSING MENU");
                 close_menu();
             }
         });

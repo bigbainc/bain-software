@@ -3,7 +3,7 @@ from .models import Question, Category
 from .forms import questionForm
 from django.contrib.auth.decorators import login_required
 from itertools import chain
-from django.db.models import Count, Q
+from django.db.models import Count, Q, Prefetch
 
 @login_required
 def home_view(request):
@@ -36,8 +36,18 @@ def home_view(request):
     else:
         form = questionForm()
 
-    categories = Category.objects.annotate(question_count=Count('questions', filter=Q(questions__owner=request.user))).order_by('name')
-    questions = Question.objects.filter(owner=request.user).order_by('-createAt')
+    user_questions = Question.objects.filter(owner=request.user).order_by('-createAt')
+    categories = (
+        Category.objects.annotate(
+            question_count=Count('questions', filter=Q(questions__owner=request.user))
+        )
+        .prefetch_related(
+            Prefetch('questions', queryset=user_questions, to_attr='owner_questions')
+        )
+        .order_by('name')
+    )
+
+    questions = user_questions
 
     context = {
         'form': form,
