@@ -28,7 +28,7 @@
             {{ form.newtags }}
             <p class="instruction">NOTE: You can not have more than 4 catagories. Attempting to add more will result in the question not being saved.</p>
             <p class="instruction">NOTE: Any new catagories created will be applied to this question.</p>
-            <button id="finish-add-question" type="submit" name="continue" value="complete">Finish</a>
+            <button id="finish-add-question" type="submit" name="continue" value="complete">Finish</button>
         </form>
     </div>
 </div>
@@ -41,13 +41,13 @@
                 <img class="icon" src="{%static 'home/images/Plus_Circle.png'%}">
                 <p class="card-middle">Create New</p>
             </a>
-            {% comment %} Cards for each category {% endcomment %}
+            {% for category in categories %}
             <div class="deck-card">
-                <p class="card-title">{%  %}</p>
-            <div class="deck-card">
-                <p class="card-title">Chinese</p>
-                <p class="info">Last Score</p>
+                <p class="card-title">{{ category.name }}</p>
+                <p class="info">Number of questions:</p>
+                <p class="big-number">{{ category.question_count }}</p>
             </div>
+            {% endfor %}
         </div>
     </div>
     <div class="section">
@@ -66,14 +66,6 @@
             </div>
         </div>
     </div>
-    <table>
-        {%for item in object_list%}
-        <tr>
-            <td>{{ item.question }}</td>
-            <td>{{ item.solution2 }}</td>
-        </tr>
-        {% endfor %}
-    </table>
 </div>
 <script>
     function open_create() {
