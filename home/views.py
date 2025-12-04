@@ -5,11 +5,16 @@ from django.contrib.auth.decorators import login_required
 from itertools import chain
 from django.db.models import Count, Q, Prefetch
 
+@login_required
 def home_view(request):
     print("HOME VIEW RENDERED")
     if request.method == "POST":
         print("POST request received")
         form = questionForm(request.POST)
+        #prevent creation of questions without login
+        if not request.user.is_authenticated:
+            return redirect('login')
+
         if form.is_valid():
             question = form.save(commit=False)
             question.owner = request.user
@@ -35,18 +40,29 @@ def home_view(request):
     else:
         form = questionForm()
 
-    user_questions = Question.objects.filter(owner=request.user).order_by('-createAt')
-    categories = (
-        Category.objects.annotate(
-            question_count=Count('questions', filter=Q(questions__owner=request.user))
+    #prevent loading questions if not logged in
+    if request.user.is_authenticated:
+        user_questions = Question.objects.filter(owner=request.user).order_by('-createAt')
+        categories = (
+            Category.objects.annotate(
+                question_count=Count('questions', filter=Q(questions__owner=request.user))
+            )
+            .prefetch_related(
+                Prefetch('questions', queryset=user_questions, to_attr='owner_questions')
+            )
+            .order_by('name')
         )
-        .prefetch_related(
-            Prefetch('questions', queryset=user_questions, to_attr='owner_questions')
+        questions = user_questions
+    else:
+        user_questions = Question.objects.none()
+        categories = list(
+            Category.objects.all().prefetch_related(
+                Prefetch('questions', queryset=Question.objects.none(), to_attr='owner_questions')
+            ).order_by('name')
         )
-        .order_by('name')
-    )
-
-    questions = user_questions
+        for c in categories:
+            setattr(c, 'question_count', 0)
+        questions = user_questions
 
     context = {
         'form': form,
