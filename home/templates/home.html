@@ -16,18 +16,13 @@
         <form class="form-area">
             <input type="text" class="question-form" name="question-form" placeholder="Question...">
             <div class="solutions-area">
-                <form method="post">
-                    {% csrf_token %}
-                    {{ form.as_p }}
-                    <button type="submit">Save</button>
-                </form>
                 <input type="text" class="answer-form" name="answer-form1" placeholder="Answer 1">
                 <input type="text" class="answer-form" name="answer-form2" placeholder="Answer 2">
                 <input type="text" class="answer-form" name="answer-form3" placeholder="Answer 3">
                 <input type="text" class="answer-form" name="answer-form4" placeholder="Answer 4">
             </div>
             <a id="add-another-question" onclick="send_question()">Add Another Question</a>
-            <a id="finish-add-question" onclick="send_question()" onclick="open_create()">Finish</a>
+            <a id="finish-add-question" href="javascript:void(0)" onclick="send_question()" onclick="open_create()">Finish</a>
         </form>
     </div>
 </div>
